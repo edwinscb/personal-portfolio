@@ -73,7 +73,9 @@ input:focus, textarea:focus, select:focus {
 		padding: 0 150px;
 	}
 }
-
+.no-underline {
+  text-decoration: none;
+}
 p.success {
 	color: green;
 }
@@ -111,11 +113,28 @@ span.navbar-text {
     display: flex;
     align-items: center;
 }
+
+.Connect-icon{
+  display: inline-block;
+  margin-left: 10px;
+}
+.Language-icon{
+  margin: auto;
+}
+.Language-icon  img {
+
+	width: 20%;
+	z-index: 1;
+	transition: 0.3s ease-in-out;
+}
+
 .social-icon {
+  
     display: inline-block;
-    margin-left: 14px;
+    margin: 10px;
 }
 .social-icon a {
+  margin: 10px;
     width: 42px;
     height: 42px;
     background: rgba(217, 217, 217, 0.1);

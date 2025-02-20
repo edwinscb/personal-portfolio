@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router } from "react-router-dom";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavBar } from "./components/NavBar";
@@ -10,14 +10,16 @@ import { Footer } from "./components/Footer";
 
 function App() {
   return (
-    <div className="App">
-      <NavBar />
-      <Banner />
-      <Skills />
-      <Projects />
-      <Contact />
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <NavBar />
+        <Banner />
+        <Skills />
+        <Projects />
+        <Contact />
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

@@ -6,15 +6,16 @@
   import TrackVisibility from 'react-on-screen';
   import cv from '../assets/PDF/HV2025Enero.pdf';
   import pdfLogo from '../assets/img/pdfLogo.svg';
+  import { HashLink } from 'react-router-hash-link';
 
   export const Banner = () => {
     const [loopNum, setLoopNum] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
     const [text, setText] = useState('');
-    const [delta, setDelta] = useState(300 - Math.random() * 100);
+    const [delta, setDelta] = useState(200 - Math.random() * 50);
     const [index, setIndex] = useState(1);
-    const toRotate = [ "Cybersecurity Engineer", "AI Developer"];
-    const period = 2000;
+    const toRotate = [ "Systems Engineer", "Machine Learning Specialist"];
+    const period = 500;
 
     useEffect(() => {
       let ticker = setInterval(() => {
@@ -58,7 +59,7 @@
                 {({ isVisible }) =>
                 <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                   <span className="tagline">Welcome to my Portfolio</span>
-                  <h1>{`Hi! I'm Edwin Castro`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Cybersecurity Specialist", "AI Developer"]'><span className="wrap">{text}</span></span></h1>
+                  <h1>{`Hi! I'm Edwin Castro`} <span className="txt-rotate" dataPeriod="500" data-rotate='["Systems Engineer", "Machine Learning Specialist"]'><span className="wrap">{text}</span></span></h1>
                     <p>
                     Passionate about cybersecurity, artificial intelligence, and volleyball.
                      My work focuses on developing computer vision technologies to analyze plays in real-time,
@@ -70,7 +71,9 @@
                         Download My CV <img src={pdfLogo} alt="" />
                       </button>
                     </a>
-                    <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size={25} /></button>
+                    <HashLink to='#connect' className="no-underline">
+                      <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size={25} /></button>
+                    </HashLink>
                 </div>}
               </TrackVisibility>
             </Col>
