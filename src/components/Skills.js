@@ -1,11 +1,24 @@
-import meter1 from "../assets/img/meter1.svg";
-import meter2 from "../assets/img/meter2.svg";
-import meter3 from "../assets/img/meter3.svg";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import Carousel from "react-multi-carousel";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 import colorSharp from "../assets/img/color-sharp.png";
+import { useLanguage } from "../context/LanguageContext";
+
+const translations = {
+  en: {
+    title: "Skills",
+    description: "I specialize in AI and monitoring, with experience in Python, Computer Vision, and cloud deployment.",
+  },
+  es: {
+    title: "Habilidades",
+    description: "Me especializo en IA y monitoreo, con experiencia en Python, Visión por Computadora y despliegue en la nube.",
+  },
+};
 
 export const Skills = () => {
+  const { currentLang } = useLanguage();
+
   const responsive = {
     superLargeDesktop: { breakpoint: { max: 4000, min: 3000 }, items: 5 },
     desktop: { breakpoint: { max: 3000, min: 1024 }, items: 3 },
@@ -14,10 +27,16 @@ export const Skills = () => {
   };
 
   const skills = [
-    { img: meter1, title: "Web Development" },
-    { img: meter2, title: "Brand Identity" },
-    { img: meter3, title: "Logo Design" },
-    { img: meter1, title: "Frontend Development" },
+    { title: "Python", percentage: 70 },
+    { title: "Visión por Computadora", percentage: 70 },
+    { title: "Machine Learning", percentage: 60 },
+    { title: "Monitoreo de Sistemas", percentage: 65 },
+    { title: "Automatización con Python", percentage: 60 },
+    { title: "Google Cloud Platform", percentage: 30 },
+    { title: "LLM con RAG", percentage: 50 },
+    { title: "Flask/FastAPI", percentage: 40 },
+    { title: "Numpy", percentage: 50 },
+    { title: "Unity", percentage: 30 },
   ];
 
   return (
@@ -26,17 +45,28 @@ export const Skills = () => {
         <div className="row">
           <div className="col-12">
             <div className="skill-bx wow zoomIn">
-              <h2>Skills</h2>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                <br />
-                Lorem Ipsum has been the industry's standard dummy text.
-              </p>
-              <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
+              <h2>{translations[currentLang].title}</h2>
+              <p>{translations[currentLang].description}</p>
+              <Carousel responsive={responsive} infinite={true} className="skill-slider">
                 {skills.map((skill, index) => (
-                  <div className="item" key={index}>
-                    <img src={skill.img} alt={`Skill: ${skill.title}`} />
-                    <h5>{skill.title}</h5>
+                  <div className="item" key={index} style={{ width: "120px" }}>
+                    <CircularProgressbar
+                      value={skill.percentage}
+                      text={`${skill.percentage}%`}
+                      background
+                      backgroundPadding={6}
+                      styles={buildStyles({
+                        backgroundColor: "#5930B2", // Color del fondo de la barra
+                        pathColor: "#FFFFFF", // Color de la barra
+                        textColor: "#fff", // Color del texto
+                        trailColor: "transparent", // Color del fondo de la barra
+                        pathWidth: 15, // Grosor de la barra
+                        textSize: "20px", // Tamaño del texto
+                      })}
+                    />
+                    
+
+                    <h5 style={{ marginTop: "10px", color: "white" }}>{skill.title}</h5>
                   </div>
                 ))}
               </Carousel>
