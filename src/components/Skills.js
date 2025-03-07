@@ -9,15 +9,40 @@ const translations = {
   en: {
     title: "Skills",
     description: "I specialize in AI and monitoring, with experience in Python, Computer Vision, and cloud deployment.",
+    skills: [
+      { title: "Python", percentage: 70 },
+      { title: "Computer Vision", percentage: 70 },
+      { title: "Machine Learning", percentage: 60 },
+      { title: "System Monitoring", percentage: 65 },
+      { title: "Automation with Python", percentage: 60 },
+      { title: "Google Cloud Platform", percentage: 30 },
+      { title: "LLM with RAG", percentage: 50 },
+      { title: "Flask/FastAPI", percentage: 40 },
+      { title: "Numpy", percentage: 50 },
+      { title: "Unity", percentage: 30 },
+    ],
   },
   es: {
     title: "Habilidades",
     description: "Me especializo en IA y monitoreo, con experiencia en Python, Visión por Computadora y despliegue en la nube.",
+    skills: [
+      { title: "Python", percentage: 70 },
+      { title: "Visión por Computadora", percentage: 70 },
+      { title: "Aprendizaje Automático", percentage: 60 },
+      { title: "Monitoreo de Sistemas", percentage: 65 },
+      { title: "Automatización con Python", percentage: 60 },
+      { title: "Google Cloud Platform", percentage: 30 },
+      { title: "LLM con RAG", percentage: 50 },
+      { title: "Flask/FastAPI", percentage: 40 },
+      { title: "Numpy", percentage: 50 },
+      { title: "Unity", percentage: 30 },
+    ],
   },
 };
 
 export const Skills = () => {
   const { currentLang } = useLanguage();
+  const { title, description, skills } = translations[currentLang];
 
   const responsive = {
     superLargeDesktop: { breakpoint: { max: 4000, min: 3000 }, items: 5 },
@@ -26,27 +51,14 @@ export const Skills = () => {
     mobile: { breakpoint: { max: 464, min: 0 }, items: 1 },
   };
 
-  const skills = [
-    { title: "Python", percentage: 70 },
-    { title: "Visión por Computadora", percentage: 70 },
-    { title: "Machine Learning", percentage: 60 },
-    { title: "Monitoreo de Sistemas", percentage: 65 },
-    { title: "Automatización con Python", percentage: 60 },
-    { title: "Google Cloud Platform", percentage: 30 },
-    { title: "LLM con RAG", percentage: 50 },
-    { title: "Flask/FastAPI", percentage: 40 },
-    { title: "Numpy", percentage: 50 },
-    { title: "Unity", percentage: 30 },
-  ];
-
   return (
     <section className="skill" id="skills">
       <div className="container">
         <div className="row">
           <div className="col-12">
             <div className="skill-bx wow zoomIn">
-              <h2>{translations[currentLang].title}</h2>
-              <p>{translations[currentLang].description}</p>
+              <h2>{title}</h2>
+              <p>{description}</p>
               <Carousel responsive={responsive} infinite={true} className="skill-slider">
                 {skills.map((skill, index) => (
                   <div className="item" key={index} style={{ width: "120px" }}>
@@ -56,16 +68,14 @@ export const Skills = () => {
                       background
                       backgroundPadding={6}
                       styles={buildStyles({
-                        backgroundColor: "#5930B2", // Color del fondo de la barra
-                        pathColor: "#FFFFFF", // Color de la barra
-                        textColor: "#fff", // Color del texto
-                        trailColor: "transparent", // Color del fondo de la barra
-                        pathWidth: 15, // Grosor de la barra
-                        textSize: "20px", // Tamaño del texto
+                        backgroundColor: "#5930B2",
+                        pathColor: "#FFFFFF",
+                        textColor: "#fff",
+                        trailColor: "transparent",
+                        pathWidth: 15,
+                        textSize: "20px",
                       })}
                     />
-                    
-
                     <h5 style={{ marginTop: "10px", color: "white" }}>{skill.title}</h5>
                   </div>
                 ))}
